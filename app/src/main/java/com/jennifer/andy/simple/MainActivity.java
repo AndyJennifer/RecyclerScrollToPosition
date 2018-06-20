@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
+//        mRecyclerView.setLayoutManager(new LinearLayoutManagerWithScrollTop(this));
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(new SimpleTextAdapter(this, mStringList));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
