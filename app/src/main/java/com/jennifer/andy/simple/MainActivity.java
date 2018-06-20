@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText mEditText;
     private Button mBtnStart;
     private List<String> mStringList;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
