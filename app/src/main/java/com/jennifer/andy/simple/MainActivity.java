@@ -3,7 +3,6 @@ package com.jennifer.andy.simple;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
@@ -21,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText mEditText;
     private Button mBtnStart;
     private List<String> mStringList;
-    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +50,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
-//        mRecyclerView.setLayoutManager(new LinearLayoutManagerWithScrollTop(this));
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setLayoutManager(new LinearLayoutManagerWithScrollTop(this));
+//        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(new SimpleTextAdapter(this, mStringList));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
     }

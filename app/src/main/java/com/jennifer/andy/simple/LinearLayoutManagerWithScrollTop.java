@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.LinearSmoothScroller;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 
 /**
  * Author:  andy.xwt
@@ -46,6 +47,14 @@ public class LinearLayoutManagerWithScrollTop extends LinearLayoutManager {
         public PointF computeScrollVectorForPosition(int targetPosition) {
             return LinearLayoutManagerWithScrollTop.this.computeScrollVectorForPosition(targetPosition);
         }
+
+        /**
+         * MILLISECONDS_PER_INCH默认为25，每毫秒移动25个像素密度，如果你要速度变快一点，就直接设置大一点，注意这里的单位是f
+         */
+        protected float calculateSpeedPerPixel(DisplayMetrics displayMetrics) {
+            return 40f / displayMetrics.densityDpi;
+        }
+
 
         @Override
         protected int getVerticalSnapPreference() {
