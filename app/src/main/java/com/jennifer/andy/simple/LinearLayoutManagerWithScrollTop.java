@@ -49,10 +49,10 @@ public class LinearLayoutManagerWithScrollTop extends LinearLayoutManager {
         }
 
         /**
-         * MILLISECONDS_PER_INCH默认为25，每毫秒移动25个像素密度，如果你要速度变快一点，就直接设置大一点，注意这里的单位是f
+         * MILLISECONDS_PER_INCH 默认为25，及移动每英寸需要花费25ms，如果你要速度变快一点，就直接设置设置小一点，注意这里的单位是f
          */
         protected float calculateSpeedPerPixel(DisplayMetrics displayMetrics) {
-            return 40f / displayMetrics.densityDpi;
+            return 15f / displayMetrics.densityDpi;
         }
 
 
