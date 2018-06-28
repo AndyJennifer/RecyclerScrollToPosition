@@ -1,5 +1,4 @@
 
-
 ### 前言
 最近开发中遇到了一个需求，需要RecyclerView滚动到指定位置后置顶显示，当时遇到这个问题的时候，心里第一反应是直接使用RecyclerView的smoothScrollToPosition()方法，实现对应位置的平滑滚动。但是在实际使用中发现并没有到底自己想要的效果。本想着偷懒直接从网上Copy下，但是发现效果并不是很好。于是就自己去研究源码。
 
@@ -146,29 +145,29 @@ public LinearSmoothScroller(Context context) {
 查看calculateSpeedPerPixel()方法
 
 ```
-    private static final float MILLISECONDS_PER_INCH = 25f;// 默认为每毫秒移动25个像素密度
+    private static final float MILLISECONDS_PER_INCH = 25f;// 默认为移动一英寸需要花费25ms
     //
     protected float calculateSpeedPerPixel(DisplayMetrics displayMetrics) {
         return MILLISECONDS_PER_INCH / displayMetrics.densityDpi;
     }
 ```
 
-也就是说，当前滚动的速度是与屏幕的像素密度相关， 通过获取当前手机屏幕每英寸的像素密度(S)，与每毫秒移动的像素密度(V)，计算出移动一个像素密度需要花费的时间(T)。OK,既然我们已经算出了移动一个像素密度需要花费的时间，那么直接乘以像素，就能算出移动该像素所需要花费的时间了。
-
+也就是说，当前滚动的速度是与屏幕的像素密度相关， 通过获取当前手机屏幕每英寸的像素密度，与每英寸移动所需要花费的时间，用每英寸移动所需要花费的时间除以像素密度就能计算出移动一个像素密度需要花费的时间。
 
 那么现在，就可以通过两个方法来修改RecyclerView的滚动速度，要么我们修改calculateSpeedPerPixel方法修改移动一个像素需要花费的时间。要么我们修改calculateTimeForScrolling方法。
 
-这里我采用修改calculateSpeedPerPixel方法来改变速度。这里我修改每毫秒移动的像素密度为30，那代表着滚动速度加快了。那么对应的滚动时间就变小了
+这里我采用修改calculateSpeedPerPixel方法来改变速度。这里我修改移动一英寸需要花费为10ms，那代表着滚动速度加快了。那么对应的滚动时间就变小了
 
 ```
   protected float calculateSpeedPerPixel(DisplayMetrics displayMetrics) {   
-      return 30f / displayMetrics.densityDpi;                                                      
+      return 10f / displayMetrics.densityDpi;                                                      
   }               
                                                             
 ```
 
 到了这里我相信大家已经明白了，怎么去修改速度与滚动位置了。好啦好啦，先睡了太困了。
 
+对了对了，[源码在这里](https://github.com/AndyJennifer/RecyclerScrollToPosition)。大家如果有兴趣，可以去研究一下。
 
 ### 最后
 最后，附上我写的一个基于Kotlin 仿开眼的项目[SimpleEyes](https://github.com/AndyJennifer/SimpleEyes)(ps: 其实在我之前，已经有很多小朋友开始仿这款应用了，但是我觉得要做就做好。所以我的项目和其他的人应该不同，不仅仅是简单的一个应用。但是，但是。但是。重要的话说三遍。还在开发阶段，不要打我)，欢迎大家follow和start.
