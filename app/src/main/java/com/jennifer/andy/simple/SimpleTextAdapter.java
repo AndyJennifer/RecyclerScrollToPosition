@@ -44,7 +44,7 @@ public class SimpleTextAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         return list.size();
     }
 
-    private class SimpleTextHolder extends RecyclerView.ViewHolder {
+    private static class SimpleTextHolder extends RecyclerView.ViewHolder {
 
         TextView mTextView;
 

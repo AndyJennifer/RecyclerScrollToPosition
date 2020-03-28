@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">RecyclerScrollToPosition</string>
+    <string name="ms_per_inch">Inch/(ms):%d</string>
+    <string name="to_position">To_position:%d</string>
+    <string name="scroll_type">Scroll_type：</string>
+    <string name="default_type">default</string>
+    <string name="scroll_top">top</string>
+    <string name="scroll_bottom">bottom</string>
+    <string name="start">start</string>
 </resources>
